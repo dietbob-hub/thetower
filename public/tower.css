@@ -209,3 +209,6 @@ html,body{width:100%;height:100%;overflow:hidden;overscroll-behavior:none}body{p
 
 /* 16.1: skill feedback, guardian phases and compact party status */
 .partyAbilityText{color:#e4c98f;font-size:9px;line-height:1.2}.floating.abilityPop{color:#ffe3a5;font-size:clamp(10px,1.3vw,18px);font-weight:800;text-shadow:0 2px 5px #111827,0 0 5px #111827;z-index:20}.unit.enemy .tag{max-width:160%;overflow-wrap:anywhere}.unit.enemy .tag>span{line-height:1.15}.partyProgressCard{gap:3px 6px}.partyProgressInfo small{line-height:1.25}@media(max-width:650px){.partyAbilityText{font-size:9px}.unit.enemy .tag{max-width:145%}}
+
+/* 16.2: one-click smart relic purchases */
+.gameStage>.footer #autoBuyRelics[hidden]{display:none!important}.gameStage>.footer #autoBuyRelics{font-size:10px;max-width:30%;white-space:normal;border-color:#d8bd7c;color:#ffe5ad}.gameStage>.footer #autoBuyRelics:not(:disabled),.autoBuyButton:not(:disabled){background:linear-gradient(#59482f,#292320);border-color:#e4c888;color:#ffebbb}.autoBuyButton{white-space:normal;min-height:40px;max-width:100%;font-size:11px;margin:5px 0 8px}.autoBuyButton:disabled{opacity:.6}.merchantRoomPanel .autoBuyButton{width:100%}@media(max-width:900px){.gameStage>.footer #autoBuyRelics{max-width:45%;font-size:10px}.autoBuyButton{min-height:44px}}
