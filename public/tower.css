@@ -42,3 +42,39 @@
 .runeKey{min-width:42px;min-height:42px;flex:1;max-width:67px;font-size:22px;background:#352e51;border:1px solid #a995ce;color:#f4eaff;cursor:pointer;}
 .runeKey:hover{background:#52446e;}@media(max-width:480px){.runePanel{width:88%;top:18%;padding:9px}.runePattern{padding:3px;min-height:30px}.runeChoices{gap:5px;min-height:34px}.runeKey{min-width:36px;min-height:36px;font-size:18px}.runeInstruction{margin:3px 0 6px}}
 
+
+/* Build 11: permanent party and individual character XP. */
+.lives{color:#efd19a;letter-spacing:.2px;font-size:13px;font-weight:700}
+.captainXPTrack,.partyXPTrack{height:5px;background:#060a13;border:1px solid #77644777;border-radius:5px;overflow:hidden;margin-top:4px}
+.captainXPTrack i,.partyXPTrack i{display:block;height:100%;width:0;background:linear-gradient(90deg,#a77a37,#ffe0a0);transition:width .25s}
+.scene[data-room="select"]{min-height:390px;aspect-ratio:auto;display:grid;align-items:center;padding:80px 4% 24px}
+.scene[data-room="select"]:before{background:linear-gradient(#0b0e1ccc,#0b0e1c80,#080d18d9)}
+.captainSelectPanel{position:relative;z-index:11;width:min(960px,100%);margin:auto;text-align:center;background:linear-gradient(145deg,#20253bd9,#10131fed);border:1px solid #bda16b;padding:clamp(12px,2.3vw,26px);box-shadow:0 14px 50px #0009}
+.captainSelectPanel h2{font:bold clamp(19px,3vw,32px) Georgia;color:#efdaa8;margin:2px 0 8px}
+.captainSelectPanel p,.partyManageOverlay p{font-size:13px;color:#c6c6d4;margin:0 0 16px}
+.captainGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:10px 0 14px}
+.captainCard{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-width:0;padding:10px 7px;background:radial-gradient(ellipse at 50% 25%,#4c3a61,#171c2c 70%);border:1px solid #937c58;color:#f4e6cb;border-radius:7px;min-height:120px;transition:background .15s,border-color .15s}
+.captainCard:hover:not(:disabled),.captainCard[aria-pressed="true"]{border-color:#ffdc91;background:radial-gradient(ellipse at 50% 25%,#665130,#202333 70%)}
+.captainCard:disabled{opacity:.65}
+.captainCard img{width:100%;height:clamp(95px,20vw,215px);object-fit:contain;filter:drop-shadow(0 8px 5px #0009)}
+.captainCard strong{font:700 clamp(11px,1.7vw,19px) Georgia;overflow-wrap:anywhere}
+.captainCardLevel{font-size:11px;font-weight:800;color:#f5ce83;letter-spacing:.4px}
+.captainCardHP{color:#c8c9d5;font-size:11px}
+.captainChoose{display:block;width:100%;border-top:1px solid #bfa06d55;padding-top:8px;min-height:30px;font-size:clamp(9px,1.3vw,12px);font-weight:700;color:#f9dc9e}
+.captainSelectHint,.slotHint{font-size:11px;color:#c0b8a6;line-height:1.5}
+.captainSelectPanel>.quiet{margin-top:10px;min-height:36px}
+.partyProgress{padding:10px 14px;background:#111825;border-top:1px solid #806f50}
+.partyProgress[hidden]{display:none!important}
+.partyProgressTitle{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:11px;color:#e0c38d;letter-spacing:1px;margin-bottom:7px}
+.partyProgressTitle .quiet{font-size:10px;min-height:32px}
+.partyProgressList{display:flex;flex-wrap:wrap;gap:7px}
+.partyProgressCard{display:flex;flex:1 1 145px;min-width:0;align-items:center;gap:8px;padding:6px 8px;border:1px solid #424553;background:#191e2b;border-radius:5px}
+.partyProgressCard.captain{border-color:#c9a36a}
+.partyProgressCard img{width:33px;height:42px;object-fit:contain;flex:none}
+.partyProgressInfo{min-width:0;flex:1}
+.partyProgressInfo strong{display:block;font-size:12px;overflow-wrap:anywhere}
+.partyProgressInfo small{font-size:10px;color:#b2b9c9}
+.slotHint{display:block;margin-top:5px}
+.xpReward{font-size:12px;color:#f3d59c;font-weight:700;margin:4px auto 9px;line-height:1.35}
+.partyManageOverlay .treePanel>.btn,.partyManageOverlay .treePanel>.quiet{margin:5px}
+@media(max-width:600px){.scene[data-room="select"]{padding:64px 8px 14px;min-height:350px}.captainSelectPanel{padding:10px 6px}.captainGrid{gap:5px}.captainCard{padding:7px 3px}.captainCard img{height:110px}.captainCardHP,.captainCardLevel{font-size:10px}.captainChoose{font-size:9px}.partyProgress{padding:7px}.partyProgressCard{flex-basis:125px}.partyProgressInfo strong{font-size:11px}.partyManageOverlay .captainCard img{height:80px}}
