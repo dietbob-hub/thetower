@@ -191,3 +191,6 @@ html,body{width:100%;height:100%;overflow:hidden;overscroll-behavior:none}body{p
 
 /* 15.2: distinct risk and rare respite route labels */
 .themedDoor[data-risk="danger"] .doorLabel{background:linear-gradient(150deg,#47232ee8,#181522ed);border-color:#c47989}.themedDoor[data-risk="danger"] .doorLabel small{color:#ffd0cc}.themedDoor[data-risk="boon"] .doorLabel{background:linear-gradient(150deg,#1d4a36e8,#142824ed);border-color:#8acba4}.themedDoor[data-risk="boon"] .doorLabel small{color:#c7f8d9}.themedDoor[data-risk="trial"] .doorLabel{background:linear-gradient(150deg,#393553ed,#171b2bed)}
+
+/* 15.3: keep the reset inside the game menu. */
+.resetArea{margin-top:20px;border-top:1px solid #8e785c55;padding:12px 0 0;display:flex;flex-direction:column;align-items:flex-start;gap:5px}.resetArea #resetTowerProgress{color:#ffd2d2;background:#321e2a;border-color:#b16c79;font-size:11px;min-height:38px}.resetArea small{color:#c8b6b8;font-size:10px}
