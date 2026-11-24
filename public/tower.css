@@ -78,3 +78,21 @@
 .xpReward{font-size:12px;color:#f3d59c;font-weight:700;margin:4px auto 9px;line-height:1.35}
 .partyManageOverlay .treePanel>.btn,.partyManageOverlay .treePanel>.quiet{margin:5px}
 @media(max-width:600px){.scene[data-room="select"]{padding:64px 8px 14px;min-height:350px}.captainSelectPanel{padding:10px 6px}.captainGrid{gap:5px}.captainCard{padding:7px 3px}.captainCard img{height:110px}.captainCardHP,.captainCardLevel{font-size:10px}.captainChoose{font-size:9px}.partyProgress{padding:7px}.partyProgressCard{flex-basis:125px}.partyProgressInfo strong{font-size:11px}.partyManageOverlay .captainCard img{height:80px}}
+
+/* Build 11.1: independently earned milestone badges. */
+.towerBadgePanel{background:#121826;border-top:1px solid #726045;color:#dec797;padding:8px 14px}
+.towerBadgePanel summary{cursor:pointer;font-size:11px;font-weight:700;letter-spacing:.45px;line-height:1.5;padding:4px 0}
+.towerBadgeGrid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px;padding:7px 0}
+.towerMilestone{display:flex;align-items:center;gap:7px;padding:9px 7px;border:1px solid #3d4252;background:#191e2a;border-radius:5px;opacity:.7;min-width:0}
+.towerMilestone.earned{opacity:1;border-color:#b99b62;background:linear-gradient(135deg,#332b21,#1b2230)}
+.milestoneGlyph{font:700 27px Georgia;color:#929aab;flex:none;text-align:center;min-width:25px}
+.towerMilestone.earned .milestoneGlyph{color:#ffd887;text-shadow:0 0 12px #d8a75977}
+.towerMilestone strong,.towerMilestone small,.milestonePower{display:block;overflow-wrap:anywhere;font-size:10px;line-height:1.5}
+.towerMilestone strong{color:#e6dfd1;font-size:11px}
+.towerMilestone small{color:#b5b6c4}
+.milestonePower{color:#e9c681;font-weight:700}
+.badgeIntegrationNote{display:block;color:#b7b7c3;font-size:10px;line-height:1.5}
+.badgeEarnedNotice{border:1px solid #caa568;background:#3b2e1d;color:#ffe3a0;font-weight:700;font-size:11px;padding:7px;margin:6px 0;line-height:1.4}
+@media(max-width:640px){.towerBadgeGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.towerBadgePanel{padding:6px 8px}.towerBadgePanel summary{font-size:10px}}
+
+.partyCombatStats{display:block;margin-top:3px;color:#d8c5a0!important;line-height:1.25;font-variant-numeric:tabular-nums}.captainCardHP{white-space:normal;text-align:center;line-height:1.4}
