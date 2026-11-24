@@ -109,3 +109,65 @@
 .rpgHeader{display:flex;justify-content:space-between;align-items:center;gap:8px}.rpgHeader h2{font:bold 23px Georgia;color:#f3d5a0;margin:0}.rpgWallet{font-size:12px;color:#d9c4ff;margin:8px 0 12px}.rpgTabs,.rpgSelect{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 13px}.rpgTabs button,.rpgSelect button{min-height:36px;font-size:11px}.rpgTabs button[aria-pressed=true],.rpgSelect button[aria-pressed=true]{border-color:#e9c77a;background:#493c2b;color:#ffe5a8}.rpgPanel p{color:#c6c4cf;font-size:12px;line-height:1.5}.rpgPanel h3{font:700 16px Georgia;color:#e7cb92;margin:12px 0 7px}.rpgIdentity{display:flex;align-items:center;gap:12px;background:#1c2332;padding:8px;margin-bottom:12px;border:1px solid #65563d}.rpgIdentity img{width:54px;height:68px;object-fit:contain}.rpgIdentity strong,.rpgIdentity small{display:block;line-height:1.6}.rpgIdentity small{font-size:11px;color:#c4bda9}.rpgSlotGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.rpgSlot{min-width:0;background:#202737;border:1px solid #55505b;padding:8px;display:flex;flex-direction:column;gap:5px;overflow-wrap:anywhere}.rpgSlot small,.rpgItem small{color:#c4bfd0;font-size:10px;line-height:1.4}.rpgSlot strong,.rpgItem strong{font-size:12px}.rpgSlot button{min-height:28px;font-size:10px}.rpgItem{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px;margin:5px 0;background:#1a2231;border:1px solid #55505b}.rpgItem strong,.rpgItem small{display:block}.rpgItem button{flex:none;max-width:47%;white-space:normal;min-height:34px;font-size:10px}.rpgPanel button:disabled{opacity:.5}.rpgPanel>.btn{margin-top:8px}
 .gearVisual{position:absolute;inset:0;pointer-events:none;z-index:3;transform:scaleX(var(--face,1));transform-origin:center bottom}.gearVisual span{position:absolute;display:block}.gearVisual svg{width:100%;height:100%;filter:drop-shadow(0 0 4px #9ebeff88)}.visualWeapon{width:31%;height:60%;right:5%;bottom:15%;transform:rotate(27deg);transform-origin:center 75%}.visualWeapon.magic{height:75%;transform:rotate(12deg)}.visualWeapon.bow{height:58%;transform:rotate(-8deg)}.visualShield{width:31%;height:35%;left:3%;bottom:23%}.visualAccessory{width:48%;height:12%;left:26%;bottom:0;border:1px solid #d4bcff;border-radius:50%;box-shadow:0 0 9px #c8abff}.visualHead{left:42%;top:8%;color:#fce2ac;font-size:clamp(9px,1.5vw,17px);text-shadow:0 0 6px #fff1b2}.armorGlow{filter:drop-shadow(0 0 4px #ae98e755)}.bootGlow:after{content:'';position:absolute;bottom:0;left:35%;width:30%;height:5%;background:#a9d9ff66;filter:blur(2px)}.unit.vanished .gearVisual{visibility:hidden}.turnOrb.starProjectile{width:25px;height:6px;border-radius:50%;background:#c0f7ff;box-shadow:0 0 12px #bceaff}
 @media(max-width:600px){.rpgOverlay{padding:6px}.rpgPanel{padding:8px}.rpgHeader h2{font-size:17px}.rpgSlotGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.rpgTabs button{min-height:36px}.wallet{justify-content:space-between!important}.wallet div{gap:3px}}
+
+/* Build 13: viewport-contained RPG workspace. */
+html,body{width:100%;height:100%;min-height:0;overflow:hidden;overscroll-behavior:none}
+body{display:block;padding:6px}
+.wrap{width:100%;max-width:none;height:calc(100vh - 12px);height:calc(100dvh - 12px);min-height:0;margin:0}
+.game{height:100%;min-height:0;display:grid;grid-template-rows:auto minmax(0,1fr) auto;position:relative;overflow:hidden}
+.hud{min-width:0;padding:8px 12px;gap:10px;flex-wrap:wrap}
+.hud .brand{font-size:clamp(17px,2.1vw,27px)}.hud .sub{font-size:9px}
+.hudNav{display:flex;gap:6px;align-items:center;flex:none}
+.hudNav button{font-size:11px;min-height:35px;padding:6px 10px}
+#partyToggle,.partyDismiss{display:none}
+.gameStage{display:grid;grid-template-columns:clamp(218px,19vw,292px) minmax(0,1fr);grid-template-rows:minmax(0,1fr);min-width:0;min-height:0;position:relative;overflow:hidden;background:#0c101b}
+.gameStage.partyAbsent{grid-template-columns:0 minmax(0,1fr)}
+.gameStage>.scene{grid-column:2;grid-row:1;min-width:0!important;min-height:0!important;width:100%;height:100%;aspect-ratio:auto;overflow:hidden}
+.gameStage>.scene[data-room="select"]{min-height:0!important;aspect-ratio:auto;padding:clamp(44px,9vh,70px) 3% 10px;overflow:auto}
+.gameStage .captainSelectPanel{max-height:100%;overflow:auto;margin:auto}
+.gameStage .captainSelectPanel .captainCard img{height:clamp(48px,23vh,180px)}
+.gameStage .captainSelectPanel .captainCard{min-height:0}
+.gameStage .doors{left:4%;right:4%;gap:3%;top:15%;bottom:23%}
+.gameStage .door{max-width:23%;width:auto;max-height:100%;height:auto;aspect-ratio:220/430;align-self:flex-end;flex:0 1 auto}
+.gameStage .door.boss{max-width:34%;height:100%}
+.gameStage .door:not(.boss){width:min(22%,calc((100dvh - 145px)*.33));height:auto;max-height:100%}
+.gameStage .scene .chapter{max-width:94%;white-space:normal}
+.gameStage .scene .rewardOverlay{overflow:auto;padding:7px}
+.gameStage .scene .rewardPanel{max-height:100%;overflow:auto}
+.partyProgress{grid-column:1;grid-row:1;min-width:0;min-height:0;display:flex;flex-direction:column;gap:7px;padding:10px;background:linear-gradient(155deg,#202235,#101725 65%);border-top:0;border-right:1px solid #8b754f;overflow:hidden}
+.partyProgress[hidden]{display:none!important}
+.partyProgressTitle{flex:none;display:flex;align-items:center;justify-content:space-between;margin:0;font-size:12px;letter-spacing:1.1px;color:#e5c68b}
+.partyProgressList{display:flex;flex-direction:column;flex:1 1 auto;min-height:0;overflow:auto;gap:7px;align-items:stretch;overscroll-behavior:contain;scrollbar-width:thin}
+.partyProgressCard{display:grid;grid-template-columns:54px minmax(0,1fr);align-items:start;flex:none;gap:5px 8px;min-width:0;padding:8px;border-radius:6px;background:linear-gradient(145deg,#242a3c,#171c29);border:1px solid #555369}
+.partyProgressCard.captain{border-color:#c6a66e;background:linear-gradient(145deg,#332c32,#1a1d2a)}
+.partyProgressCard.partyProtected .partyPortrait{box-shadow:0 0 12px #d9bd5955;border-color:#ddbf65}
+.partyProgressCard.partyActing{border-color:#ffdc85;box-shadow:inset 0 0 12px #dcb95e44}
+.partyProgressCard.partyDown{opacity:.65}
+.partyPortrait{width:54px;height:84px;display:flex;justify-content:center;align-items:center;border:1px solid #686176;border-radius:5px;background:radial-gradient(ellipse,#57506a,#181c2b 76%);padding:3px;overflow:hidden}
+.partyPortrait:disabled{opacity:1;cursor:default}
+.partyPortrait img{width:100%;height:100%;object-fit:contain}
+.partyProgressInfo{min-width:0}.partyProgressInfo strong{display:block;font-size:12px;line-height:1.2;color:#f0e4ce;overflow-wrap:anywhere}
+.partyProgressInfo small{display:block;line-height:1.3;font-size:10px}
+.partyProgressInfo .partyLevelText{color:#eed49b;font-weight:700;margin:2px 0}
+.partyHealthText{color:#a6ddbb!important;font-variant-numeric:tabular-nums}
+.partyHPTrack,.partyXPTrack{height:5px;border:0;background:#070c17;border-radius:4px;overflow:hidden;margin:3px 0}
+.partyHPTrack i{display:block;height:100%;background:linear-gradient(90deg,#4c9a74,#a0e3ab);transition:width .18s}
+.partyXPText{margin-top:3px;color:#d2c5f0!important}
+.partyGearText{margin-top:3px;color:#b0acbd!important;white-space:normal;overflow-wrap:anywhere}
+.partyLevelButton{grid-column:1/-1;width:100%;font-size:10px;font-weight:800;min-height:31px;border:1px solid #e2c07d;border-radius:4px;background:linear-gradient(135deg,#77582e,#423021);color:#ffebbc}
+.partyLevelButton:disabled{opacity:.7;background:#242838;border-color:#666176;color:#c8bfce}
+.partyPanelBottom{flex:none}.partyCampActions{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:7px}.partyCampActions button{font-size:10px;min-height:36px;padding:6px 4px}
+.slotHint{font-size:10px;margin:0;color:#c5bbab}
+.gameMenu[hidden],.gameMenu [hidden]{display:none!important}
+.gameMenu{position:absolute;inset:0;z-index:50;display:flex;align-items:flex-start;justify-content:center;padding:14px;background:#080d19d9;overflow:auto;overscroll-behavior:contain}
+.gameMenuContent{width:min(780px,100%);margin:auto;padding:15px;border:1px solid #bd9d64;background:linear-gradient(135deg,#202638,#101723);box-shadow:0 12px 40px #000a}
+.gameMenuHeader{display:flex;align-items:center;justify-content:space-between;gap:9px}.gameMenuHeader h2{font:bold 24px Georgia;color:#edce97;margin:0}
+.gameMenuTabs{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}.gameMenuTabs button{min-height:36px}.gameMenuTabs [aria-pressed=true]{background:#55432c;border-color:#d3b479;color:#ffe2ac}
+.gameMenu .towerBadgePanel,.gameMenu .test{border:0;background:none;padding:0;margin:0}
+.gameMenu .towerBadgeGrid{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}
+.inGameAbout{color:#c0becb;line-height:1.6;font-size:12px}
+.footer{min-width:0;padding:9px 12px;flex-wrap:wrap;gap:8px}.footer h2{font-size:clamp(14px,1.5vw,18px)}.footer small{font-size:11px;line-height:1.25}.footer .btn,.footer .quiet{min-height:38px}
+@media(min-width:901px) and (max-height:760px){.partyProgress{padding:7px;gap:5px}.partyProgressCard{padding:5px;grid-template-columns:42px minmax(0,1fr);gap:3px 6px}.partyPortrait{width:42px;height:66px}.partyProgressInfo small{font-size:9px;line-height:1.15}.partyProgressInfo strong{font-size:11px}.partyHPTrack,.partyXPTrack{height:4px;margin:2px 0}.partyProgressList{gap:4px}.partyLevelButton{min-height:25px;font-size:9px}}
+@media(max-width:900px){body{padding:0}.wrap{height:100vh;height:100dvh}.game{border:0}.gameStage,.gameStage.partyAbsent{grid-template-columns:minmax(0,1fr)}.gameStage>.scene{grid-column:1}.gameStage>.partyProgress{position:absolute;z-index:40;inset:0 auto 0 0;width:min(315px,88%);box-shadow:12px 0 30px #000b;display:none}.gameStage[data-party-open="true"]>.partyProgress:not([hidden]){display:flex}.partyDismiss,#partyToggle:not([hidden]){display:inline-flex;align-items:center;justify-content:center}.partyDismiss{font-size:10px;min-height:30px}.hud{gap:5px;padding:6px 8px}.hud .wallet{gap:8px}.hudNav button{min-height:36px;padding:6px 8px}.gameStage .doors{top:15%;bottom:28%}.gameStage .door:not(.boss){width:22%;max-height:100%}.gameStage .scene .chapter strong{font-size:clamp(19px,4vw,28px)}.footer{padding:7px 9px}.footer .status{flex:1 1 120px}.footer .turnAttack{min-width:115px;min-height:44px}.gameMenu{padding:8px}.gameMenuContent{padding:10px}.gameMenuHeader h2{font-size:19px}}
+@media(max-width:650px){.hud .sub{font-size:8px}.hud .brand{font-size:17px}.hud .stat{font-size:9px}.hud .wallet{flex:1 0 100%;display:flex;justify-content:space-between!important;border-top:1px solid #484253;padding-top:5px}.wallet .ticketLabel .ticketIcon{width:15px;height:15px}.wallet span{font-size:8px}.wallet b{font-size:11px}.wallet .tokenHud{flex-wrap:wrap}.hud .captainXPTrack{height:3px}.hud .lives{font-size:11px}.gameStage .scene[data-room="select"]{padding:40px 7px 8px}.gameStage .scene .captainSelectPanel .captainCard img{height:clamp(45px,16vh,120px)}.gameStage .scene .campExit{min-height:40px}.partyProgressInfo strong{font-size:12px}.gameMenu .towerBadgeGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-height:480px){.hud{padding:3px 7px;gap:4px}.hud .sub{display:none}.hud .brand{font-size:15px}.hud .wallet{padding-top:2px}.hudNav button{min-height:28px}.footer{padding:4px 7px}.footer small{font-size:9px}.footer .btn,.footer .quiet{min-height:32px;padding:5px 8px}.gameStage .captainSelectPanel{padding:5px}.gameStage .captainSelectPanel h2{font-size:16px}.gameStage .captainSelectPanel p{font-size:10px;margin:4px}.gameStage .captainSelectPanel .captainCard img{height:45px}.gameStage .captainSelectPanel .captainCard{padding:3px}.gameStage .captainSelectPanel .captainChoose{min-height:18px;padding:2px}.gameStage .captainGrid{margin:3px 0;gap:4px}.gameStage .captainSelectPanel .captainSelectHint{font-size:9px}}
