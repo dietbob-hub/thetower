@@ -272,3 +272,17 @@ html,body{width:100%;height:100%;overflow:hidden;overscroll-behavior:none}body{p
  .campRankingClose{display:block;min-width:38px;min-height:38px;font-size:20px;padding:2px}
  .campRankingTabs button{min-height:40px}
 }
+
+/* 18.2: use a bounded layout viewport, not the unscaled transform overflow. */
+.gameStage>.treeOverlay.sphereOverlay{inset:0!important;width:auto!important;height:auto!important;max-width:none;max-height:none;padding:0!important;box-sizing:border-box;overflow:hidden;z-index:80;background:radial-gradient(ellipse at 50% 48%,#1b2339,#0c1425 50%,#070d17 100%)}
+.gameStage>.sphereOverlay .spherePanel{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto minmax(0,1fr) auto;width:100%;height:100%;min-width:0;min-height:0;max-height:100%;box-sizing:border-box;overflow:hidden}
+.gameStage>.sphereOverlay .sphereViewport{display:block;position:relative;width:100%;height:100%;min-height:0;min-width:0;padding:0;border:0;box-sizing:border-box;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin}
+.gameStage>.sphereOverlay .sphereViewport.sphereFitted{overflow:hidden;cursor:default}
+.sphereSizer{position:relative;display:block;margin:0!important;max-width:none;max-height:none;box-sizing:border-box;overflow:hidden;contain:layout paint}
+.sphereMap{position:absolute;transform-origin:0 0;visibility:hidden}.sphereMap.sphereReady{visibility:visible}
+.sphereHeader>div:first-child{min-width:0;flex:1}.sphereCount,.sphereAutoStatus{display:block;font-size:10px;line-height:1.3}.sphereAutoStatus{color:#e1c389}
+.sphereTools{flex:0 1 auto}.sphereTools .sphereAuto{min-height:36px;white-space:nowrap;letter-spacing:.15px;color:#decba7;border-color:#9d8358;background:#172337}
+.sphereTools .sphereAuto[aria-pressed=true]{color:#fff1ba;border-color:#e1c084;background:#594324;box-shadow:0 0 10px #d8b46335}
+.sphereDetail{min-height:0;box-sizing:border-box}
+@media(max-width:900px){.sphereHeader{padding:5px 7px}.sphereTools{justify-content:flex-start;gap:4px}.sphereTools .sphereAuto{min-height:38px;font-size:10px}.sphereAutoStatus{font-size:9px}.sphereDetail{padding:6px}}
+@media(max-height:450px){.sphereHeader{padding:3px 6px;gap:3px}.sphereHeader h2{font-size:15px}.sphereCount,.sphereAutoStatus{font-size:9px}.sphereTools button,.sphereTools .sphereAuto{min-height:28px;padding:3px 6px}.sphereLegend{padding:2px 4px;gap:2px 8px}.sphereLegend span{font-size:9px}.sphereDetail{padding:4px 6px;gap:6px}.sphereTitle{font-size:14px}.sphereDesc,.sphereRequirement{font-size:10px}.sphereBuy{min-height:32px}}
