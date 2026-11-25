@@ -242,3 +242,33 @@ html,body{width:100%;height:100%;overflow:hidden;overscroll-behavior:none}body{p
 .campReserveSprite{background:none;border:0;color:#ffe8c2;display:flex;flex-direction:column;align-items:center;width:clamp(54px,11%,115px);min-width:50px;padding:0;pointer-events:auto;max-height:100%;cursor:pointer}.campReserveSprite img{width:100%;height:clamp(35px,11vh,100px);object-fit:contain;filter:drop-shadow(0 4px 5px #000a);animation:campWander 4s ease-in-out infinite;animation-delay:var(--camp-delay)}.campReserveSprite span{font:600 10px Georgia;text-shadow:0 1px 4px #000,0 0 4px #000;max-width:100%;overflow-wrap:anywhere}@keyframes campWander{0%,100%{transform:translate(-6px,0)}50%{transform:translate(6px,-3px)}}.campExpeditionControls{position:absolute;z-index:15;left:2%;right:2%;top:18%;display:flex;gap:5px;justify-content:flex-end;pointer-events:none}.campExpeditionControls button,.doorTeamSwitch{pointer-events:auto;min-height:34px;font-size:10px;white-space:normal}.doorTeamSwitch{position:absolute;right:2%;bottom:4%;z-index:15}
 @media(max-width:650px){.sphereHeader{padding:4px;gap:4px;flex-wrap:wrap}.sphereTools button{min-height:35px;padding:5px}.sphereLegend{gap:3px 8px}.sphereDetail{min-height:78px;padding:5px}.sphereBuy{font-size:10px;max-width:37%}.characterBadgeList{grid-template-columns:repeat(2,minmax(0,1fr))}.characterBadgeHeader small{margin-left:0}.campRosterBanner{top:13%;font-size:10px}.campExpeditionControls{top:22%;justify-content:center}.campExpeditionControls button{min-height:40px}.campReserveSprites{inset:34% 3% 36%}.expeditionCharacter select{min-height:44px}.doorTeamSwitch{min-height:44px}}
 @media(prefers-reduced-motion:reduce){.campReserveSprite img{animation:none}}
+
+/* 18.1: camp-only right leaderboard; the camp scene never sits beneath the desktop panel. */
+.gameStage{--camp-rank-width:clamp(224px,19vw,296px)}
+.campLeaderboard[hidden],.campRankingToggle[hidden]{display:none!important}
+.campLeaderboard{position:absolute;z-index:32;inset:var(--hud-top) 8px var(--hud-bottom) auto;width:calc(var(--camp-rank-width) - 16px);box-sizing:border-box;min-height:0;display:flex;flex-direction:column;gap:8px;padding:10px;background:linear-gradient(150deg,#1b2639f7,#0b1423fc 75%);border:1px solid #97805a;border-radius:8px;color:#eee2c9;box-shadow:0 5px 18px #0008;overflow:hidden}
+.campRankingHead{display:flex;align-items:center;justify-content:space-between;gap:6px;flex:none;padding-bottom:5px;border-bottom:1px solid #bda06c44}
+.campRankingHead small{font-size:9px;letter-spacing:1.3px;color:#bea87c}
+.campRankingHead h2{font:bold 22px Georgia,serif;color:#f0d5a1;margin:2px 0 0}
+.campRankingClose,.campRankingToggle{display:none}
+.campRankingBest{display:flex;align-items:center;justify-content:space-between;gap:6px;flex:none;background:#c6a56812;border:1px solid #b69b6244;border-radius:5px;padding:8px}
+.campRankingBest span{font-size:11px;color:#d2c5ad}.campRankingBest b{font:700 23px Georgia;color:#f7d68d;font-variant-numeric:tabular-nums}
+.campRankingTabs{display:flex;gap:3px;flex:none}.campRankingTabs button{flex:1 1 0;min-width:0;font-size:9px;padding:6px 2px;min-height:32px;letter-spacing:.2px;background:#111a28;border:1px solid #52586a;color:#bfc8d6}
+.campRankingTabs button[aria-pressed="true"]{background:#5c462b;border-color:#ddb875;color:#ffe9b4}
+.campRankingSub{font-size:10px;letter-spacing:.4px;text-transform:uppercase;color:#c5b89e}
+.campRankingRows{flex:1 1 auto;min-height:0;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;display:flex;flex-direction:column;gap:5px}
+.campRankRow{display:grid;grid-template-columns:19px 32px minmax(0,1fr) auto;align-items:center;gap:5px;min-height:45px;flex:none;background:#152034;border:1px solid #424c5f;border-radius:5px;padding:5px 4px}
+.campRankRow.rankFirst{border-color:#ba995d;background:linear-gradient(100deg,#4b3c28,#1b2434)}
+.campRankNumber{font-size:13px;font-weight:700;text-align:center;color:#bdc9d7;font-variant-numeric:tabular-nums}.rankFirst .campRankNumber{color:#ffdb8e}
+.campRankRow img{width:32px;height:34px;object-fit:contain;filter:drop-shadow(0 2px 4px #0008)}
+.campRankInfo,.campRankScore{display:flex;flex-direction:column;gap:3px;min-width:0}.campRankInfo strong{font-size:11px;color:#f3e2bf;overflow-wrap:anywhere}.campRankInfo small{font-size:9px;color:#bfc8d6}
+.campRankScore{text-align:right;flex:none}.campRankScore b{font-size:15px;font-variant-numeric:tabular-nums;color:#f4d291}.campRankScore small{font-size:8px;color:#b5bdcc}
+.campRankingNote{flex:none;font-size:10px;color:#adb8c9;line-height:1.35;padding-top:6px;border-top:1px solid #bda06c33}
+@media(min-width:1101px) and (min-height:450px){.gameStage.campRankingActive>.scene{right:var(--camp-rank-width)}}
+@media(max-width:1100px),(max-height:449px){
+ .gameStage>.campLeaderboard{display:none;inset:var(--hud-top) 5px var(--hud-bottom) auto;width:min(320px,calc(100% - 10px));z-index:43}
+ .gameStage[data-ranking-open="true"]>.campLeaderboard:not([hidden]){display:flex}
+ .gameStage>.campRankingToggle:not([hidden]){display:block;position:absolute;right:8px;top:calc(var(--hud-top) + 4px);z-index:22;min-height:37px;padding:6px 9px;font-size:9px;background:#152238eb;border:1px solid #c2a570;color:#f4dab0}
+ .campRankingClose{display:block;min-width:38px;min-height:38px;font-size:20px;padding:2px}
+ .campRankingTabs button{min-height:40px}
+}
