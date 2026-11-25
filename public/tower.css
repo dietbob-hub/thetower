@@ -395,3 +395,11 @@ html,body{width:100%;height:100%;overflow:hidden;overscroll-behavior:none}body{p
 }
 @media(max-width:390px) and (orientation:portrait){.gameStage{--hud-top:149px}}
 @media(max-height:449px) and (orientation:landscape){.gameStage>.hud .towerHomeLink{min-height:26px;margin-top:1px;padding:3px 6px}.gameStage .sphereTools .towerHomeLink{min-height:30px}}
+
+/* 18.6 — The Base owns the return destination; no external homepage shortcut. */
+.towerVillageReturn[hidden]{display:none!important}
+.towerVillageReturn{display:inline-flex;align-items:center;justify-content:center;min-height:36px;white-space:nowrap;font:700 11px/1.2 system-ui,sans-serif;color:#f2d79e}
+.gameStage>.hud .towerVillageReturn{margin-top:3px}
+@media(max-width:1100px),(max-height:449px){.towerVillageReturn{min-height:44px;padding:7px 9px}}
+@media(max-width:650px) and (orientation:portrait){.gameStage{--hud-top:118px}.gameStage:has(.hud .towerVillageReturn:not([hidden])){--hud-top:142px}}
+@media(max-width:390px) and (orientation:portrait){.gameStage{--hud-top:124px}.gameStage:has(.hud .towerVillageReturn:not([hidden])){--hud-top:149px}}
