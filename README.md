@@ -1,4 +1,4 @@
-# The Tower — hosted test 18.6
+# The Tower — hosted test 18.7
 
 Standalone fantasy RPG test, separate from the live Marbles Anonymous game. Browser-local progression, six sample recruits, permanent per-character exact milestone clears and planned automatic badge bonuses, multiple expedition teams (unlocked at Guardian checkpoints at or above 150, 250, 500 and 1000), reserve deployment and growing camp visuals. Replays award missing personal badges, not repeat currencies or XP. Account-wide historical progress is preserved, but cannot establish individual badge eligibility. The real roster, shared leaderboards, account authentication and main-game rewards are not connected.
 
@@ -16,3 +16,5 @@ Camp shows a local character leaderboard (highest floor, level and badges). Sphe
 
 ## Parent integration: Village navigation
 The Base must embed the Tower in its own game view, retain the shared game header, and use its existing Village navigation action. The Tower emits `{channel:'marbles-tower',version:1,type:'ready'}` to its allowed parent origins. The Base should verify `event.origin === 'https://thetower-4yy6.onrender.com'` and `event.source === towerFrame.contentWindow`, then reply to that frame with `{channel:'marbles-base',version:1,type:'connect-tower'}` using the exact Tower origin. After this handshake, Tower displays `← VILLAGE` in gameplay and major menu headers. Clicking it sends `{channel:'marbles-tower',version:1,type:'navigate',destination:'village'}` to the verified parent. The Base should invoke its real in-game Village action (not redirect to the streaming homepage), and ideally hide the frame instead of destroying it to preserve the session. Do not treat these messages or browser saves as authoritative reward or account data. This host-side wiring still requires the current Base source.
+
+18.7 enables the verified Village return destination `https://marblesanonymous.com/home-base/index.html` in standalone testing. When embedded by the verified Base parent, Village navigation still uses its host bridge instead of redirecting. Standalone return resumes the Tower from its saved checkpoint. The actual Base website has not yet been modified and the character/account/reward integration is not connected.

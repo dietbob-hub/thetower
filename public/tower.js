@@ -234,30 +234,32 @@ function closeTowerOverlay(overlay){
 }
 // The Base owns its Village navigation. No redirect to the streaming homepage.
 const towerBaseOrigins=new Set(['https://marblesanonymous.com','https://marblesannonymous.sonimulroy22.chatgpt.site']);
+const towerVillageURL='https://marblesanonymous.com/home-base/index.html';
 let towerBaseHost=null;
 function trustedTowerBaseMessage(event){
  return window.parent!==window&&event.source===window.parent&&towerBaseOrigins.has(event.origin)&&event.data&&event.data.channel==='marbles-base'&&event.data.version===1;
 }
-function refreshTowerVillageButtons(){
- for(const b of document.querySelectorAll('.towerVillageReturn'))b.hidden=!towerBaseHost||isolatedMobileDemo;
-}
+function canReturnToVillage(){return !isolatedMobileDemo&&(window.parent===window||!!towerBaseHost);}
+function refreshTowerVillageButtons(){for(const b of document.querySelectorAll('.towerVillageReturn'))b.hidden=!canReturnToVillage();}
 function towerVillageButton(){
- const b=document.createElement('button');b.type='button';b.className='quiet towerVillageReturn';b.textContent='← VILLAGE';b.setAttribute('aria-label','Return to Village');b.hidden=!towerBaseHost||isolatedMobileDemo;return b;
+ const b=document.createElement('button');b.type='button';b.className='quiet towerVillageReturn';b.textContent='← VILLAGE';b.setAttribute('aria-label','Return to Village');b.hidden=!canReturnToVillage();return b;
 }
 function setupTowerBaseNavigation(){
- if(isolatedMobileDemo||window.parent===window)return;
+ if(isolatedMobileDemo)return;
  window.addEventListener('message',event=>{
   if(!trustedTowerBaseMessage(event))return;
   if(event.data.type==='connect-tower'){towerBaseHost=event.origin;refreshTowerVillageButtons();window.parent.postMessage({channel:'marbles-tower',version:1,type:'connected'},towerBaseHost);}
  });
  document.addEventListener('click',event=>{
-  const b=event.target.closest?.('.towerVillageReturn');if(!b||!towerBaseHost||b.hidden)return;
+  const b=event.target.closest?.('.towerVillageReturn');if(!b||b.hidden||!canReturnToVillage())return;
   event.preventDefault();
-  // Persist existing checkpoint data; the host can hide rather than destroy the Tower view.
-  saveProgress();
-  window.parent.postMessage({channel:'marbles-tower',version:1,type:'navigate',destination:'village'},towerBaseHost);
+  if(towerBaseHost){window.parent.postMessage({channel:'marbles-tower',version:1,type:'navigate',destination:'village'},towerBaseHost);return;}
+  if(phase!=='camp'&&phase!=='select'&&!confirm('Return to the Village? The Tower will resume from your last saved checkpoint, not this exact room.'))return;
+  if(phase==='camp'&&!preview)saveProgress();
+  window.location.assign(towerVillageURL);
  });
- for(const origin of towerBaseOrigins)window.parent.postMessage({channel:'marbles-tower',version:1,type:'ready'},origin);
+ refreshTowerVillageButtons();
+ if(window.parent!==window)for(const origin of towerBaseOrigins)window.parent.postMessage({channel:'marbles-tower',version:1,type:'ready'},origin);
 }
 function towerPanelHeader(title,overlay){
  const header=document.createElement('header');header.className='towerPanelHeader';
